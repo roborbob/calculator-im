@@ -1,12 +1,20 @@
 import React, {useState} from 'react';
 import './App.scss';
 import Button from './components/Button/button';
+import {numberConfig, operatorConfig} from './components/config';
 
 
 function App() {
-  const [output, setOutput] = useState("0");
   const [operator, setOperator] = useState(null);
   const [result, setResult] = useState(null);
+
+  const inputHandler = (e) => {
+
+  }
+
+  const operatorHandler = (e) => {
+
+  }
 
   const clearHandler = () => {
 
@@ -15,6 +23,12 @@ function App() {
   const saveHandler = () => {
 
   }
+
+  const evaluteHandler = () => {
+
+  }
+
+
 
   return (
     <div className="calculator">
@@ -34,9 +48,24 @@ function App() {
               />           
           </div>
           <div className="numbers">
+            {numberConfig.map((number, index) => (
+              <Button
+                key={index}
+                value={number}
+                clicked={(e) => inputHandler(e)}/>
+            ))}
           </div>
         </div>
         <div className="column-two">
+        {operatorConfig.map((operator,index) => (
+            <Button
+              key={index}
+              value={operator}
+              clicked={(e) => operatorHandler(e)}/>
+          ))}
+          <Button
+            value="="
+            clicked={evaluteHandler}/>
         </div>
       </section>
     </div>
