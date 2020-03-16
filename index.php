@@ -5,8 +5,7 @@
         header("Access-Control-Allow-Origin: *");
         header('Access-Control-Allow-Headers: X-Requested-With, privatekey');
         header('Access-Control-Allow-Credentials: true');
-        header("Cache-Control: no-cache");
-    
+        header("Cache-Control: no-cache");  
     }
     // Access-Control headers are received during OPTIONS requests
     if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
@@ -16,7 +15,6 @@
             header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
         exit(0);
     }
-
 
     // Get the IP address, cant seem to reach the HTTP_CLIENT_IP this way, needs further work.
     function getUserIpAddr(){
@@ -56,7 +54,7 @@
         fclose($fs);
         
     } else {
-        $headers = array("Results","IP","Date");
+        $headers = array("Results","IP","Browser","Date");
         $fh = fopen("data.csv", "w");
         fputcsv($fh, $headers);
         fputcsv($fh, $dataArray);
