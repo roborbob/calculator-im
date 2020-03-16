@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.scss';
+import axios from 'axios';
 import Button from './components/Button/button';
 import {numberConfig, operatorConfig} from './components/config';
 
@@ -82,7 +83,27 @@ function App() {
   }
 
   const saveHandler = () => {
+   
+    const dt = new Date();
+    const postResult = result.toString();
+    const config = {
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Headers": "origin, content-type, accept"
+      }
+    }
 
+    const data = {
+      "result" : postResult,
+      "time" :  dt,
+    }
+
+    axios.post("http://localhost:8888/calculator-im/index.php", data, config)
+          .then((response) => {
+            console.log(response);
+          }, (error) => {
+            console.log(error);
+          });
   }
 
 
