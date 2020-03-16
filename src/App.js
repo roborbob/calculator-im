@@ -41,11 +41,47 @@ function App() {
     setResult(null) 
   }
 
-  const saveHandler = () => {
-
+  const evaluteHandler = (e) => {
+    inputHandler(e)
+    // *** Logic is based on single operator calculations ***.
+    // Transform the output string into an array of values.
+    let outputArray = output.split("")
+    // Locate operator, store values either side of operator into variables.
+    let i = outputArray.indexOf(operator);
+    let right = parseFloat(outputArray.splice(i+1).join(""));
+    let left = parseFloat(outputArray.splice(-0, i).join(""));
+    // Pass variables to switch statement and evalute.  
+    switch(operator) {
+      case "+":
+          let plus = (left + right);
+          (plus - Math.floor(plus)) !== 0 ?
+            setResult(plus.toFixed(2)) :
+            setResult(plus);
+      break;
+      case "-":
+          let minus = (left - right);
+          (minus - Math.floor(minus)) !== 0 ?
+            setResult(minus.toFixed(2)) :
+            setResult(minus);
+      break;
+      case "*":
+          let multiply = (left * right);
+          (multiply - Math.floor(multiply)) !== 0 ?
+            setResult(multiply.toFixed(2)) :
+            setResult(multiply);
+      break;
+      case "/":
+          let divide = (left / right);
+          (divide - Math.floor(divide)) !== 0 ?
+            setResult(divide.toFixed(2)) :
+            setResult(divide);
+      break;
+      default:
+      break;
+    }
   }
 
-  const evaluteHandler = () => {
+  const saveHandler = () => {
 
   }
 
