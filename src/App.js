@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './App.scss';
 import axios from 'axios';
 import Button from './components/Button/button';
@@ -9,6 +9,32 @@ function App() {
   const [output, setOutput] = useState("0");
   const [operator, setOperator] = useState(null);
   const [result, setResult] = useState(null);
+  const [browser, setBrowser] = useState("unknown")
+
+  useEffect(() => {
+    // *** Taken from  - https://developer.mozilla.org/en-US/docs/Web/API/Window/navigator ***
+    var sBrowser, sUsrAg = navigator.userAgent;
+
+    // The order matters here, and this may report false positives for unlisted browsers.   
+    if (sUsrAg.indexOf("Firefox") > -1) {
+      sBrowser = "Mozilla Firefox";
+    } else if (sUsrAg.indexOf("SamsungBrowser") > -1) {
+      sBrowser = "Samsung Internet";
+    } else if (sUsrAg.indexOf("Opera") > -1 || sUsrAg.indexOf("OPR") > -1) {
+      sBrowser = "Opera";
+    } else if (sUsrAg.indexOf("Trident") > -1) {
+      sBrowser = "Microsoft Internet Explorer";
+    } else if (sUsrAg.indexOf("Edge") > -1) {
+      sBrowser = "Microsoft Edge";
+    } else if (sUsrAg.indexOf("Chrome") > -1) {
+      sBrowser = "Google Chrome";
+    } else if (sUsrAg.indexOf("Safari") > -1) {
+      sBrowser = "Apple Safari";
+    } else {
+      sBrowser = "unknown";
+    }
+    setBrowser(sBrowser);
+}, []);
 
   const inputHandler = (e) => {
     // Begin new calculation if previous result showing, clear state.
@@ -96,6 +122,7 @@ function App() {
     const data = {
       "result" : postResult,
       "time" :  dt,
+      "browser": browser
     }
 
     axios.post("http://localhost:8888/calculator-im/index.php", data, config)

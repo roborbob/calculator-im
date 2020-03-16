@@ -43,8 +43,9 @@
     // Store variables
     $result = $data->result;
     $time = $data->time;
+    $browser = $data->browser;
 
-    $dataArray = array($result, $ip_address, $time);
+    $dataArray = array($result, $ip_address, $browser, $time);
     
     $filename = './data.csv';
    
