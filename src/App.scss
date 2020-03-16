@@ -1,1 +1,85 @@
 
+$screen: #29363b;
+$save: hsl(352, 81%, 60%);
+$saveBorder: hsl(352, 80%, 20%);
+$numbers: hsl(4, 87%, 72%);
+$numbersBorder: hsl(4, 52%, 61%);
+$operators: hsl(28, 88%, 75%);
+$operatorBorder: hsl(28, 38%, 54%);
+
+.calculator {
+  margin: 100px auto 50px;
+  top: 10px;
+  box-sizing: border-box;
+  background: $screen;
+  width: 320px;
+  font-size: 0;
+  .screen {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 220px;
+    padding: 20px;
+    font-size: 30px;
+    color: white;
+    text-align: right;
+    font-weight: 200;
+  }
+  .keypad {
+    display: flex;
+    flex-direction: row;
+    max-width: 320px;
+    .column-one {
+      display:flex;
+      flex-direction: column;
+      .clear-save{
+        button { 
+          background: $save;
+          transition: 0.2s; 
+          &:hover {
+            background: hsl(352, 81%, 56%); 
+            box-shadow: inset 1px 1px 5px $saveBorder;          
+          }
+          &:active {
+            background: hsl(352, 81%, 53%); 
+            box-shadow: inset 5px 5px 10px $saveBorder;
+          }
+        }
+      }
+      .numbers {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        button {
+          background: $numbers;
+          transition: 0.2s;  
+            &:hover {
+                background: hsl(4, 87%, 70%); 
+                box-shadow: inset 1px 1px 5px $numbersBorder;          
+            }
+            &:active {
+                background: hsl(4, 87%, 67%); 
+                box-shadow: inset 5px 5px 10px $numbersBorder;
+            }
+        }
+      }
+    }
+    .column-two {
+      display: flex;
+      flex-direction: column;
+      button {
+        background: $operators;
+        transition: 0.2s;  
+          &:hover {
+              background: hsl(28, 88%, 70%); 
+              box-shadow: inset 1px 1px 5px $operatorBorder;          
+          }
+          &:active {
+              background: hsl(28, 88%, 67%); 
+              box-shadow: inset 5px 5px 10px $operatorBorder;
+          }
+      }
+    }
+  }
+}
