@@ -5,19 +5,40 @@ import {numberConfig, operatorConfig} from './components/config';
 
 
 function App() {
+  const [output, setOutput] = useState("0");
   const [operator, setOperator] = useState(null);
   const [result, setResult] = useState(null);
 
   const inputHandler = (e) => {
-
+    // Begin new calculation if previous result showing, clear state.
+    // Passing values to screen from event.target
+    if (result) {
+      clearHandler()
+      setOutput(e.target.value) 
+    } else {
+      if (e.target.value !== ".") {
+        output !== "0" ? setOutput(output + e.target.value) : setOutput(e.target.value);
+      } else {
+        setOutput(output + e.target.value);
+      }
+    }
   }
 
   const operatorHandler = (e) => {
-
+    // Store operator value when used.
+    if (output !== "0") {
+      setOperator(e.target.value)
+      setOutput(output + e.target.value)
+    } else {
+      setOperator(operator)
+    }
   }
 
   const clearHandler = () => {
-
+    // Reset all state values to default setting.
+    setOutput("0")
+    setOperator(null)
+    setResult(null) 
   }
 
   const saveHandler = () => {
@@ -33,6 +54,10 @@ function App() {
   return (
     <div className="calculator">
       <section className="screen">
+        <div className="output">{output}</div>
+        {result ? 
+        <div className="result">{result}</div> :
+        null}
       </section>
       <section className="keypad">
         <div className="column-one">

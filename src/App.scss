@@ -25,6 +25,17 @@ $operatorBorder: hsl(28, 38%, 54%);
     color: white;
     text-align: right;
     font-weight: 200;
+    .output {
+        overflow-wrap: break-word;
+        width: 100%;
+      }
+    .result {
+        transition: 0.2s;
+        font-size: 60px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        width: 100%;
+    }
   }
   .keypad {
     display: flex;
