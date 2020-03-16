@@ -8,7 +8,7 @@ $operators: hsl(28, 88%, 75%);
 $operatorBorder: hsl(28, 38%, 54%);
 
 .calculator {
-  margin: 100px auto 50px;
+  margin: 50px auto 10px;
   top: 10px;
   box-sizing: border-box;
   background: $screen;
@@ -94,3 +94,27 @@ $operatorBorder: hsl(28, 38%, 54%);
     }
   }
 }
+
+.calculator-log {
+    display: block;
+    margin: 10px auto 20px;
+    width: 320px;
+    font-size: 20px;
+    height: 50px;
+    font-weight: 300;
+    background: hsl(240, 100%, 64%); 
+    transition: 0.2s;  
+    &:hover {
+        background: hsl(240, 100%, 60%); 
+        box-shadow: inset 1px 1px 5px hsl(240, 100%, 21%);          
+    }
+    &:active {
+        background: hsl(240, 100%, 57%); 
+        box-shadow: inset 5px 5px 10px hsl(256, 100%, 10%);
+    } 
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
+  

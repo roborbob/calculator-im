@@ -136,6 +136,10 @@ function App() {
 
 
   return (
+    <React.Fragment>
+    <button className="calculator-log">
+      <a href="http://localhost:8888/calculator-im/calculations.php" target="blank">Calculator Log</a>
+    </button>
     <div className="calculator">
       <section className="screen">
         <div className="output">{output}</div>
@@ -178,6 +182,7 @@ function App() {
         </div>
       </section>
     </div>
+    </React.Fragment>
   );
 }
 
